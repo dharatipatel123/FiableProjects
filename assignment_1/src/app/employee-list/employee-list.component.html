@@ -1,0 +1,77 @@
+<table class="table table-hover table-sm">
+    <thead>
+        <tr class="table-dark">
+            <th>Employee Id</th>
+            <th>Name</th>
+            <th>Salary</th>
+            <th>Designation</th>
+            <th>Credit</th>
+            <th>Eligible For Promotion</th>
+        </tr>
+    </thead>
+    <tbody  class="table-group-divider">
+        <!-- [ngClass] = "{'table-warning' : emp.Credit > 5}" -->
+
+        <ng-container *ngFor="let emp of EmployeeList" [ngSwitch]="emp.EmployeeId.charAt(0)">
+            <tr *ngSwitchCase="'E'" [ngClass]="'table-info'">
+                <td>{{emp.EmployeeId}}</td>
+                <td>{{emp.Name}}</td>
+                <td>{{emp.Salary | currency:"USD"}}</td>
+                <td>{{emp.Designation}}</td>
+                <td>{{emp.Credit}}</td>
+                <td>
+                <div *ngIf="emp.Salary > 9000 && emp.Credit > 5; else elseBlock">Yes</div>
+                    <ng-template #elseBlock>No</ng-template>
+                </td>
+            </tr> 
+            
+            <tr *ngSwitchCase="'M'" [ngClass]="'table-warning'">
+                <td>{{emp.EmployeeId}}</td>
+                <td>{{emp.Name}}</td>
+                <td>{{emp.Salary | currency:"USD"}}</td>
+                <td>{{emp.Designation}}</td>
+                <td>{{emp.Credit}}</td>
+                <td>
+                <div *ngIf="emp.Salary > 9000 && emp.Credit > 5; else elseBlock">Yes</div>
+                    <ng-template #elseBlock>No</ng-template>
+                </td>
+            </tr> 
+
+            <tr *ngSwitchCase="'N'" [ngClass]="'table-danger'">
+                <td>{{emp.EmployeeId}}</td>
+                <td>{{emp.Name}}</td>
+                <td>{{emp.Salary | currency:"USD"}}</td>
+                <td>{{emp.Designation}}</td>
+                <td>{{emp.Credit}}</td>
+                <td>
+                <div *ngIf="emp.Salary > 9000 && emp.Credit > 5; else elseBlock">Yes</div>
+                    <ng-template #elseBlock>No</ng-template>
+                </td>
+            </tr> 
+
+            <tr *ngSwitchCase="'H'" [ngClass]="'table-primary'">
+                <td>{{emp.EmployeeId}}</td>
+                <td>{{emp.Name}}</td>
+                <td>{{emp.Salary | currency:"USD"}}</td>
+                <td>{{emp.Designation}}</td>
+                <td>{{emp.Credit}}</td>
+                <td>
+                <div *ngIf="emp.Salary > 9000 && emp.Credit > 5; else elseBlock">Yes</div>
+                    <ng-template #elseBlock>No</ng-template>
+                </td>
+            </tr> 
+
+            <tr *ngSwitchDefault>
+                <td>{{emp.EmployeeId}}</td>
+                <td>{{emp.Name}}</td>
+                <td>{{emp.Salary | currency:"USD"}}</td>
+                <td>{{emp.Designation}}</td>
+                <td>{{emp.Credit}}</td>
+                <td>
+                <div *ngIf="emp.Salary > 9000 && emp.Credit > 5; else elseBlock">Yes</div>
+                    <ng-template #elseBlock>No</ng-template>
+                </td>
+            </tr> 
+        </ng-container>
+    </tbody>
+</table>
